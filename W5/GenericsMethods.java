@@ -1,0 +1,31 @@
+public class GenericsMethods {
+
+    // <T> sebelum return type artinya method ini punya tipe datanya sendiri
+    // Java Generic Method, menerima dua objek GenericsType bertipe T, lalu membandingkan isinya
+    public static <T> boolean isEqual(GenericsType<T> g1, GenericsType<T> g2) {
+        // equals() membandingkan isi dari g1 dan g2, bukan objeknya
+        return g1.get().equals(g2.get());
+    }
+
+    public static void main(String args[]) {
+        // buat objek GenericsType khusus String
+        GenericsType<String> g1 = new GenericsType<>();
+        g1.set("Java");
+
+        GenericsType<String> g2 = new GenericsType<>();
+        g2.set("Java");
+
+        boolean isEqual = GenericsMethods.<String>isEqual(g1, g2);
+        // above statement can be written simply as 
+        isEqual = GenericsMethods.isEqual(g1, g2);
+
+        /*
+         * This feature, known as type inference, allows you to invoke
+         * a generic method as an ordinary method, without specifying 
+         * a type between angle brackets 
+         */
+        
+        // Compiler will infer the type that is needed
+    }
+}
+
